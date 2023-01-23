@@ -9,12 +9,13 @@ class WindowHandler():
 
         self.driver.get('https://linkedin.com')
 
-    def connect_to_linkedin(self, email, password):
-        # Select email input
-        (email_div, password_div) = self.driver.find_element(By.CLASS_NAME, "sign-in-form__form-input-container") \
-            .find_elements(By.TAG_NAME, 'div')
-        email_div.find_element(By.TAG_NAME, 'input').send_keys(email)
-        password_div.find_element(By.TAG_NAME, 'input').send_keys(password)
+    def connect_to_linkedin(self, email="", password=""):
+        if email != "" and password != "":
+            # Select email input
+            (email_div, password_div) = self.driver.find_element(By.CLASS_NAME, "sign-in-form__form-input-container") \
+                .find_elements(By.TAG_NAME, 'div')
+            email_div.find_element(By.TAG_NAME, 'input').send_keys(email)
+            password_div.find_element(By.TAG_NAME, 'input').send_keys(password)
         sign_in_button = self.driver.find_element(By.CLASS_NAME, "sign-in-form__submit-button")
         sign_in_button.click()
 
